@@ -6,8 +6,9 @@ Remap Logitech MX Master back/forward buttons to switch macOS desktops using [Ha
 
 | Button | Action |
 |--------|--------|
-| Back (below scroll wheel, rear) | Switch to left desktop (ctrl+←) |
-| Forward (below scroll wheel, front) | Switch to right desktop (ctrl+→) |
+| 3 — Back (below scroll wheel, rear) | Switch to left desktop (ctrl+←) |
+| 4 — Forward (below scroll wheel, front) | Switch to right desktop (ctrl+→) |
+| 5 — Thumb rest (large button under thumb) | Open Mission Control |
 
 ## Prerequisites
 
@@ -83,7 +84,7 @@ hs.eventtap.new({hs.eventtap.event.types.otherMouseDown}, function(e)
 end):start()
 ```
 
-Click your buttons and note the numbers, then update `BACK_BUTTON` and `FORWARD_BUTTON` in `init.lua`.
+Click your buttons and note the numbers, then update `BACK_BUTTON`, `FORWARD_BUTTON`, and `MISSION_CONTROL_BUTTON` in `init.lua`.
 
 ## Copy to another Mac
 
@@ -100,6 +101,12 @@ Then install Hammerspoon on the other Mac, grant Accessibility permissions, and 
 - No background updater or cloud sync eating resources
 - Plain Lua config file you control — not a proprietary database
 - Survives macOS updates better (Accessibility app vs. kernel extension)
+
+## Related
+
+- [warp-claude-hotkey](https://github.com/timomak/warp-claude-hotkey) — sibling Hammerspoon config: Cmd+Shift+D splits the current Warp pane and launches Claude Code in it.
+
+The two configs are independent and can be combined in a single `~/.hammerspoon/init.lua` — no conflicts.
 
 ## License
 

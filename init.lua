@@ -1,9 +1,11 @@
--- MX Master: remap back/forward buttons to switch desktops
--- Button 4 (back) → previous desktop
--- Button 3 (forward) → next desktop
+-- MX Master button remapping
+-- Button 3 (back)        → previous desktop (ctrl+←)
+-- Button 4 (forward)     → next desktop (ctrl+→)
+-- Button 5 (thumb rest)  → Mission Control
 
 local BACK_BUTTON = 3
 local FORWARD_BUTTON = 4
+local MISSION_CONTROL_BUTTON = 5
 
 local mouseHandler = hs.eventtap.new({ hs.eventtap.event.types.otherMouseDown }, function(e)
     local btn = e:getProperty(hs.eventtap.event.properties.mouseEventButtonNumber)
@@ -21,6 +23,9 @@ local mouseHandler = hs.eventtap.new({ hs.eventtap.event.types.otherMouseDown },
         hs.eventtap.event.newKeyEvent(hs.keycodes.map.right, true):post()
         hs.eventtap.event.newKeyEvent(hs.keycodes.map.right, false):post()
         hs.eventtap.event.newKeyEvent(hs.keycodes.map.ctrl, false):post()
+        return true
+    elseif btn == MISSION_CONTROL_BUTTON then
+        hs.execute([[open -a "Mission Control"]])
         return true
     end
 
