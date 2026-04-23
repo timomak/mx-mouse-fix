@@ -57,10 +57,21 @@ Enable launch at login:
 
 ### 3. Install the config
 
+This file is a Lua module — load it via `require` from your main `~/.hammerspoon/init.lua`.
+
+Clone the repo into `~/.hammerspoon/mx-mouse-fix`:
+
 ```bash
-mkdir -p ~/.hammerspoon
-cp init.lua ~/.hammerspoon/init.lua
+git clone https://github.com/timomak/mx-mouse-fix.git ~/.hammerspoon/mx-mouse-fix
 ```
+
+Then add this line to `~/.hammerspoon/init.lua` (create the file if it doesn't exist):
+
+```lua
+_G.mxMouse = require("mx-mouse-fix")
+```
+
+The `_G.` prefix is **required**. It stores the returned module table as a global so its `hs.eventtap` isn't garbage-collected after `require` returns.
 
 Then reload: **Hammerspoon menu bar icon → Reload Config**
 
